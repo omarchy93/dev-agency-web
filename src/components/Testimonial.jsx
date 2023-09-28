@@ -1,6 +1,15 @@
-import React from "react";
+async function getData() {
+  const res = await fetch("https://agency.teamrabbil.com/api/TestimonialList");
 
-const Testimonial = () => {
+  if (!res.ok) {
+    throw new Error("Failed to fetch data");
+  }
+
+  return res.json();
+}
+
+const Testimonial = async () => {
+  const data = await getData();
   return (
     <>
       <section className="  pt-20 pb-12">
@@ -15,222 +24,34 @@ const Testimonial = () => {
             </p>
           </div>
           <div className="flex flex-wrap">
-            <div className="w-full md:w-1/2 py-5 md:px-5">
-              <div
-                className="px-6 py-10 bg-white shadow rounded hover-up-5 wow animate__animated animate__fadeIn animated border border-gray-100 hover:border-gray-200"
-                data-wow-delay=".1s"
-              >
-                <div className="flex items-center mb-4">
-                  <img
-                    className="h-16 w-16 rounded-full object-cover"
-                    src="https://img.freepik.com/free-photo/young-bearded-man-with-striped-shirt_273609-5677.jpg?w=900&t=st=1695802380~exp=1695802980~hmac=49dde71bdda7824e822a381cc2d3de915548e6eefbb10203a557f8202a828fdf"
-                    alt="Monst"
-                  />
-                  <div className="pl-4">
-                    <strong className="mt-6 mb-2 text-md">
-                      Geraldine Tusoy
-                    </strong>
-                    <p className="text-gray-500 text-xs mt-3">
-                      CEO, Co Founders
+            {data.map((item, id) => {
+              return (
+                <div key={id} className="w-full md:w-1/2 py-5 md:px-5">
+                  <div
+                    className="px-6 py-10 bg-white shadow rounded hover-up-5 wow animate__animated animate__fadeIn animated border border-gray-100 hover:border-gray-200"
+                    data-wow-delay=".1s"
+                  >
+                    <div className="flex items-center mb-4">
+                      <img
+                        className="h-16 w-16 rounded-full object-cover"
+                        src={item.image}
+                      />
+                      <div className="pl-4">
+                        <strong className="mt-6 mb-2 text-md">
+                          {item.name}
+                        </strong>
+                        <p className="text-gray-500 text-xs mt-3">
+                          {item.designation}
+                        </p>
+                      </div>
+                    </div>
+                    <p className="leading-loose text-blueGray-400 mb-5">
+                      {item.msg}
                     </p>
                   </div>
                 </div>
-                <p className="leading-loose text-blueGray-400 mb-5">
-                  Donec consequat tortor risus, at auctor felis consequat a.
-                  Donec quis dolor sem. Sed sollicitudin magna in hendrerit
-                  pulvinar. Vestibulum non quam velit.
-                </p>
-              </div>
-            </div>
-            <div className="w-full md:w-1/2 py-5 md:px-5">
-              <div
-                className="px-6 py-10 bg-white shadow rounded hover-up-5 wow animate__animated animate__fadeIn animated border border-gray-100 hover:border-gray-200"
-                data-wow-delay=".1s"
-              >
-                <div className="flex items-center mb-4">
-                  <img
-                    className="h-16 w-16 rounded-full object-cover"
-                    src="https://img.freepik.com/free-photo/young-bearded-man-with-striped-shirt_273609-5677.jpg?w=900&t=st=1695802380~exp=1695802980~hmac=49dde71bdda7824e822a381cc2d3de915548e6eefbb10203a557f8202a828fdf"
-                    alt="Monst"
-                  />
-                  <div className="pl-4">
-                    <strong className="mt-6 mb-2 text-md">
-                      Geraldine Tusoy
-                    </strong>
-                    <p className="text-gray-500 text-xs mt-3">
-                      CEO, Co Founders
-                    </p>
-                  </div>
-                </div>
-                <p className="leading-loose text-blueGray-400 mb-5">
-                  Donec consequat tortor risus, at auctor felis consequat a.
-                  Donec quis dolor sem. Sed sollicitudin magna in hendrerit
-                  pulvinar. Vestibulum non quam velit.
-                </p>
-              </div>
-            </div>
-            <div className="w-full md:w-1/2 py-5 md:px-5">
-              <div
-                className="px-6 py-10 bg-white shadow rounded hover-up-5 wow animate__animated animate__fadeIn animated border border-gray-100 hover:border-gray-200"
-                data-wow-delay=".1s"
-              >
-                <div className="flex items-center mb-4">
-                  <img
-                    className="h-16 w-16 rounded-full object-cover"
-                    src="https://img.freepik.com/free-photo/young-bearded-man-with-striped-shirt_273609-5677.jpg?w=900&t=st=1695802380~exp=1695802980~hmac=49dde71bdda7824e822a381cc2d3de915548e6eefbb10203a557f8202a828fdf"
-                    alt="Monst"
-                  />
-                  <div className="pl-4">
-                    <strong className="mt-6 mb-2 text-md">
-                      Geraldine Tusoy
-                    </strong>
-                    <p className="text-gray-500 text-xs mt-3">
-                      CEO, Co Founders
-                    </p>
-                  </div>
-                </div>
-                <p className="leading-loose text-blueGray-400 mb-5">
-                  Donec consequat tortor risus, at auctor felis consequat a.
-                  Donec quis dolor sem. Sed sollicitudin magna in hendrerit
-                  pulvinar. Vestibulum non quam velit.
-                </p>
-              </div>
-            </div>
-            <div className="w-full md:w-1/2 py-5 md:px-5">
-              <div
-                className="px-6 py-10 bg-white shadow rounded hover-up-5 wow animate__animated animate__fadeIn animated border border-gray-100 hover:border-gray-200"
-                data-wow-delay=".1s"
-              >
-                <div className="flex items-center mb-4">
-                  <img
-                    className="h-16 w-16 rounded-full object-cover"
-                    src="https://img.freepik.com/free-photo/young-bearded-man-with-striped-shirt_273609-5677.jpg?w=900&t=st=1695802380~exp=1695802980~hmac=49dde71bdda7824e822a381cc2d3de915548e6eefbb10203a557f8202a828fdf"
-                    alt="Monst"
-                  />
-                  <div className="pl-4">
-                    <strong className="mt-6 mb-2 text-md">
-                      Geraldine Tusoy
-                    </strong>
-                    <p className="text-gray-500 text-xs mt-3">
-                      CEO, Co Founders
-                    </p>
-                  </div>
-                </div>
-                <p className="leading-loose text-blueGray-400 mb-5">
-                  Donec consequat tortor risus, at auctor felis consequat a.
-                  Donec quis dolor sem. Sed sollicitudin magna in hendrerit
-                  pulvinar. Vestibulum non quam velit.
-                </p>
-              </div>
-            </div>
-            <div className="w-full md:w-1/2 py-5 md:px-5">
-              <div
-                className="px-6 py-10 bg-white shadow rounded hover-up-5 wow animate__animated animate__fadeIn animated border border-gray-100 hover:border-gray-200"
-                data-wow-delay=".1s"
-              >
-                <div className="flex items-center mb-4">
-                  <img
-                    className="h-16 w-16 rounded-full object-cover"
-                    src="https://img.freepik.com/free-photo/young-bearded-man-with-striped-shirt_273609-5677.jpg?w=900&t=st=1695802380~exp=1695802980~hmac=49dde71bdda7824e822a381cc2d3de915548e6eefbb10203a557f8202a828fdf"
-                    alt="Monst"
-                  />
-                  <div className="pl-4">
-                    <strong className="mt-6 mb-2 text-md">
-                      Geraldine Tusoy
-                    </strong>
-                    <p className="text-gray-500 text-xs mt-3">
-                      CEO, Co Founders
-                    </p>
-                  </div>
-                </div>
-                <p className="leading-loose text-blueGray-400 mb-5">
-                  Donec consequat tortor risus, at auctor felis consequat a.
-                  Donec quis dolor sem. Sed sollicitudin magna in hendrerit
-                  pulvinar. Vestibulum non quam velit.
-                </p>
-              </div>
-            </div>
-            <div className="w-full md:w-1/2 py-5 md:px-5">
-              <div
-                className="px-6 py-10 bg-white shadow rounded hover-up-5 wow animate__animated animate__fadeIn animated border border-gray-100 hover:border-gray-200"
-                data-wow-delay=".1s"
-              >
-                <div className="flex items-center mb-4">
-                  <img
-                    className="h-16 w-16 rounded-full object-cover"
-                    src="https://img.freepik.com/free-photo/young-bearded-man-with-striped-shirt_273609-5677.jpg?w=900&t=st=1695802380~exp=1695802980~hmac=49dde71bdda7824e822a381cc2d3de915548e6eefbb10203a557f8202a828fdf"
-                    alt="Monst"
-                  />
-                  <div className="pl-4">
-                    <strong className="mt-6 mb-2 text-md">
-                      Geraldine Tusoy
-                    </strong>
-                    <p className="text-gray-500 text-xs mt-3">
-                      CEO, Co Founders
-                    </p>
-                  </div>
-                </div>
-                <p className="leading-loose text-blueGray-400 mb-5">
-                  Donec consequat tortor risus, at auctor felis consequat a.
-                  Donec quis dolor sem. Sed sollicitudin magna in hendrerit
-                  pulvinar. Vestibulum non quam velit.
-                </p>
-              </div>
-            </div>
-            <div className="w-full md:w-1/2 py-5 md:px-5">
-              <div
-                className="px-6 py-10 bg-white shadow rounded hover-up-5 wow animate__animated animate__fadeIn animated border border-gray-100 hover:border-gray-200"
-                data-wow-delay=".1s"
-              >
-                <div className="flex items-center mb-4">
-                  <img
-                    className="h-16 w-16 rounded-full object-cover"
-                    src="https://img.freepik.com/free-photo/young-bearded-man-with-striped-shirt_273609-5677.jpg?w=900&t=st=1695802380~exp=1695802980~hmac=49dde71bdda7824e822a381cc2d3de915548e6eefbb10203a557f8202a828fdf"
-                    alt="Monst"
-                  />
-                  <div className="pl-4">
-                    <strong className="mt-6 mb-2 text-md">
-                      Geraldine Tusoy
-                    </strong>
-                    <p className="text-gray-500 text-xs mt-3">
-                      CEO, Co Founders
-                    </p>
-                  </div>
-                </div>
-                <p className="leading-loose text-blueGray-400 mb-5">
-                  Donec consequat tortor risus, at auctor felis consequat a.
-                  Donec quis dolor sem. Sed sollicitudin magna in hendrerit
-                  pulvinar. Vestibulum non quam velit.
-                </p>
-              </div>
-            </div>
-            <div className="w-full md:w-1/2 py-5 md:px-5">
-              <div
-                className="px-6 py-10 bg-white shadow rounded hover-up-5 wow animate__animated animate__fadeIn animated border border-gray-100 hover:border-gray-200"
-                data-wow-delay=".1s"
-              >
-                <div className="flex items-center mb-4">
-                  <img
-                    className="h-16 w-16 rounded-full object-cover"
-                    src="https://img.freepik.com/free-photo/young-bearded-man-with-striped-shirt_273609-5677.jpg?w=900&t=st=1695802380~exp=1695802980~hmac=49dde71bdda7824e822a381cc2d3de915548e6eefbb10203a557f8202a828fdf"
-                    alt="Monst"
-                  />
-                  <div className="pl-4">
-                    <strong className="mt-6 mb-2 text-md">
-                      Geraldine Tusoy
-                    </strong>
-                    <p className="text-gray-500 text-xs mt-3">
-                      CEO, Co Founders
-                    </p>
-                  </div>
-                </div>
-                <p className="leading-loose text-blueGray-400 mb-5">
-                  Donec consequat tortor risus, at auctor felis consequat a.
-                  Donec quis dolor sem. Sed sollicitudin magna in hendrerit
-                  pulvinar. Vestibulum non quam velit.
-                </p>
-              </div>
-            </div>
+              );
+            })}
           </div>
         </div>
       </section>
